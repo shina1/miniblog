@@ -1,17 +1,21 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { blogDataType, blogMenuData } from '../../utils/blogData';
+import { defaultImage } from '../../utils/defaultImage';
 import { filterButtons } from '../../utils/filterButton';
 
 import './blog.css'
 
+// type settings for component props
 type blogMenuPropsType = {
     filtredData: string,
     setFilteredData: React.Dispatch<React.SetStateAction<string>>,
     setCardData: React.Dispatch<React.SetStateAction<blogDataType[]>>,
     cardData : blogDataType[] 
 }
+
 const BlogMenuComp = ({filtredData, setFilteredData, setCardData, cardData}: blogMenuPropsType) => {
+    
     let navigate = useNavigate()
 
     const handleSetData = (name: string) => {
@@ -20,6 +24,7 @@ const BlogMenuComp = ({filtredData, setFilteredData, setCardData, cardData}: blo
     const handleSetUrl = (id:number) => [
         navigate(`/blog/${id}`)
     ]
+    
   return (
     <section className='max-w-[1640px] mx-auto px-4 py-12'>
       <h2 className='text-orange-600 font-bold text-4xl text-center'>Top Rated</h2>
@@ -61,7 +66,7 @@ const BlogMenuComp = ({filtredData, setFilteredData, setCardData, cardData}: blo
              cardData.map((data)=> {
                return data.category.toLowerCase() === filtredData.toLowerCase() &&
                 <div key={data.id} className='relative border shadow-lg hover:scale-105 duration-300 rounded-lg'>
-                    <img src={data.image} alt={data.name} className='w-full h-[200px] object-cover rounded-t-lg cursor-pointer' />
+                    <img src={data.image ? data.image : defaultImage} alt={data.name} className='w-full h-[200px] object-cover rounded-t-lg cursor-pointer' />
                     {
                         data.featured ? <div className='flex items-center justify-center absolute right-0 top-2 text-[#fff] text[13px] bg-[#0F344E] w-[100px] p-1 rounded-l-xl'>Featured</div> : <div className='flex items-center justify-center absolute right-0 top-2 text-[#fff] text[13px] bg-orange-600 w-[100px] p-1 rounded-l-xl'>{data.category.charAt(0).toUpperCase() + data.category.slice(1)}</div> 
                     }
