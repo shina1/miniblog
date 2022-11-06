@@ -1,4 +1,20 @@
+/** @type {import('tailwindcss').Config} */
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base{
+    button{
+      @apply border border-black rounded-xl px-5 py-1
+    }
+  }
+
+
+body{
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.borderBox{
+  border: 2px solid red;
+}
