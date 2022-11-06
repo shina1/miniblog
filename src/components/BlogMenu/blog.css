@@ -1,0 +1,6 @@
+.fifty-chars {
+    width: 100%;
+    overflow: hidden;
+    white-space: wrap;
+    text-overflow: ellipsis;
+}
