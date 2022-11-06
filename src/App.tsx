@@ -27,11 +27,14 @@ function App() {
     content: "",
     date: `${new Date()}`,
   });
+
   const handleChange = (e: { target: { name: any; value: any; }; }) => {
     setFormState({...formState, [e.target.name]: e.target.value})
   }
+// collection from the datABSE
+  const blogCollectionRef = collection(db, 'blogs');
 
-  const blogCollectionRef = collection(db, 'blogs')
+  
   const handleSubmit = async (e: { preventDefault: () => void; }) => {
     e.preventDefault()
     await addDoc(blogCollectionRef, {blogTitle:formState.blogTitle,category:formState.category,featured: formState.featured, imageUrl:formState.imageUrl,content:formState.content, date:formState.date, blogAuthor:{name:auth.currentUser?.displayName, id: auth.currentUser?.uid} });

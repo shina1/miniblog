@@ -35,7 +35,7 @@ const Header = ({setIsLogIn}: headerPrps) => {
       {
         isLoggedIn === 'true'  ?  <div className='hidden md:hidden lg:flex md:gap-2'>
         <button className='bg-[#FF7606]/80 text-white hidden md:flex items-center gap-2 py-2 rounded-full border-none'>
-           <BiPen size={30}/> Create Post
+           <BiPen size={30}/><NavLink to="/create">Create Post</NavLink> 
         </button>
         <button className='bg-[#FF7606]/80 text-white hidden md:flex  items-center gap-2 py-2 rounded-full border-none' onClick={() => logOut(setIsLogIn,navigate)}>
         <BiLogOut size={30}/> Logout
