@@ -9,9 +9,9 @@ const HeroComponent = () => {
         
             <div className='absolute w-full h-full text-gray-200 max-h-[700px] bg-black/50 flex flex-col justify-center  pl-2'>
                 <div className='w-full sm:w-full lg:w-[60%]'>
-                    <h3 className='px-4 py-1 sm:py-2 lg:py-4 text-1xl sm:text-2xl lg:text-4xl '>Meet our community</h3>
-                    <h1 className='px-4 py-1 sm:py-1 lg:py-4 text-2xl sm:text-4xl lg:text-7xl font-bold'>The <span className='text-orange-500 '>Best</span> Blogging plartform about</h1>
-                    <h1 className='px-4 py-1 sm:py-1 lg:py-4 text-2xl sm:text-4xl lg:text-7xl font-bold'><span className='text-orange-500 '>Anime</span>, Technology and <span className='text-orange-500'>Sports</span> 
+                    <h3 className='px-4 py-1 sm:py-2 lg:py-4 text-1xl sm:text-2xl lg:text-4xl text-gray-100'>Meet our community</h3>
+                    <h1 className='px-4 py-1 sm:py-1 lg:py-4 text-2xl sm:text-4xl lg:text-7xl font-bold text-gray-100'>The <span className='text-orange-500 '>Best</span> Blogging plartform about</h1>
+                    <h1 className='px-4 py-1 sm:py-1 lg:py-4 text-2xl sm:text-4xl lg:text-7xl font-bold text-gray-100'><span className='text-orange-500 '>Anime</span>, Technology and <span className='text-orange-500'>Sports</span> 
                     </h1>
                 </div>
             </div>

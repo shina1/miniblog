@@ -1,9 +1,10 @@
 import React, {useState} from 'react'
-import BlogMenuComp from '../../components/BlogMenu/BlogMenu'
-import FooterComp from '../../components/FooterComp/Footer'
-import HeadlineComponent from '../../components/HeadlineComp/Headline'
-import HeroComponent from '../../components/HeroSection/Hero'
-import SubscriptionComp from '../../components/Newsletter/Subscribe'
+import BlogMenuComp from '../../components/BlogMenu/BlogMenu';
+import FooterComp from '../../components/FooterComp/Footer';
+import HeadlineComponent from '../../components/HeadlineComp/Headline';
+import HeroComponent from '../../components/HeroSection/Hero';
+import SubscriptionComp from '../../components/Newsletter/Subscribe';
+
 import { blogMenuData } from '../../utils/blogData'
 
 const Home = () => {

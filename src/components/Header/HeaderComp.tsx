@@ -2,11 +2,16 @@ import React, { useState } from 'react'
 import {AiOutlineCloseCircle, AiOutlineMenu, AiOutlineSearch} from 'react-icons/ai';
 import {BiPen, BiLogIn, BiLogOut} from 'react-icons/bi';
 import {AiOutlineHome} from 'react-icons/ai'
-import { NavLink } from "react-router-dom"
+import { NavLink, useNavigate } from "react-router-dom"
+import { logOut } from '../../utils/auth/authLogout';
 
-const Header = () => {
+type headerPrps = {
+  setIsLogIn:React.Dispatch<React.SetStateAction<boolean>>
+}
+const Header = ({setIsLogIn}: headerPrps) => {
   const [openNav, setOpenNav] = useState(false);
-  const isLoggedIn = true
+  const isLoggedIn = localStorage.getItem('isLogIn')
+  const navigate = useNavigate()
   return (
     <div className='max-w-[1640px] mx-auto flex justify-between items-center p-4 shadow-[0_10px_30px_-28px_rgba(0,0,0,0.3)]' >
       <div className='flex items-center'>
@@ -28,17 +33,17 @@ const Header = () => {
       </div>
       {/* login button */}
       {
-        isLoggedIn  ?  <div className='hidden md:hidden lg:flex md:gap-2'>
+        isLoggedIn === 'true'  ?  <div className='hidden md:hidden lg:flex md:gap-2'>
         <button className='bg-[#FF7606]/80 text-white hidden md:flex items-center gap-2 py-2 rounded-full border-none'>
            <BiPen size={30}/> Create Post
         </button>
-        <button className='bg-[#FF7606]/80 text-white hidden md:flex  items-center gap-2 py-2 rounded-full border-none'>
+        <button className='bg-[#FF7606]/80 text-white hidden md:flex  items-center gap-2 py-2 rounded-full border-none' onClick={() => logOut(setIsLogIn,navigate)}>
         <BiLogOut size={30}/> Logout
       </button>
       </div>
        : 
        <button className='bg-[#FF7606]/80 text-white hidden md:hidden lg:flex  items-center gap-2 py-2 rounded-full border-none'>
-        <BiLogIn size={24}/> Login
+        <BiLogIn size={24}/> <NavLink to="/login">Login</NavLink>
       </button>
       }
      
@@ -54,14 +59,13 @@ const Header = () => {
           <nav>
             <ul className='flex flex-col p-4 text-gray-800'>
               <li className='text-xl py-4 flex' onClick={()=> {setOpenNav(!openNav)}}><AiOutlineHome size={25} className='mr-4'/><NavLink to="/">Home</NavLink></li>
-              {/* <Link to='/home'><li className='text-xl py-4 flex'><AiOutlineHome size={25} className='mr-4'/>Home</li></Link> */}
-              {isLoggedIn ? 
+              {isLoggedIn === 'true' ? 
               <>
                 <li className='text-xl py-4 flex' onClick={()=> {setOpenNav(!openNav)}}><BiPen size={25} className='mr-4'/><NavLink to="/create">Create Blog</NavLink></li>
-                <li className='text-xl py-4 flex' onClick={()=> {setOpenNav(!openNav)}}><BiLogOut size={25} className='mr-4'/>Logout</li>
+                <li className='text-xl py-4 flex cursor-pointer' onClick={() => {logOut(setIsLogIn,navigate); setOpenNav(!openNav)}}><BiLogOut size={25} className='mr-4'/>Logout</li>
               </> 
               : 
-              <li className='text-xl py-4 flex' onClick={()=> {setOpenNav(!openNav)}}><BiLogIn size={25} className='mr-4'/>Login</li>
+              <li className='text-xl py-4 flex' onClick={()=> {setOpenNav(!openNav)}}><BiLogIn size={25} className='mr-4'/><NavLink to="/login">Login</NavLink></li>
               }
               
             </ul>
