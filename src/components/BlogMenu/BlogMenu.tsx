@@ -63,23 +63,6 @@ const BlogMenuComp = ({filtredData, setFilteredData, cardData}: blogMenuPropsTyp
       </div>
       {/* display food data */}
       <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 pt-4'>
-        {/* {
-            cardData.length === 0 && <div className="border border-blue-300 shadow rounded-md p-4 max-w-sm w-full mx-auto">
-            <div className="animate-pulse flex space-x-4">
-                    <div className="rounded-full bg-slate-700 h-10 w-10"></div>
-                        <div className="flex-1 space-y-6 py-1">
-                        <div className="h-2 bg-slate-700 rounded"></div>
-                        <div className="space-y-3">
-                            <div className="grid grid-cols-3 gap-4">
-                            <div className="h-2 bg-slate-700 rounded col-span-2"></div>
-                            <div className="h-2 bg-slate-700 rounded col-span-1"></div>
-                            </div>
-                            <div className="h-2 bg-slate-700 rounded"></div>
-                        </div>
-                        </div>
-                    </div>
-            </div>
-        } */}
         {
              cardData && cardData.map((data)=> {
                return data.category.toLowerCase() === filtredData.toLowerCase() &&
@@ -89,7 +72,7 @@ const BlogMenuComp = ({filtredData, setFilteredData, cardData}: blogMenuPropsTyp
                         data.featured ? <div className='flex items-center justify-center absolute right-0 top-2 text-[#fff] text[13px] bg-[#0F344E] w-[100px] p-1 rounded-l-xl'>Featured</div> : <div className='flex items-center justify-center absolute right-0 top-2 text-[#fff] text[13px] bg-orange-600 w-[100px] p-1 rounded-l-xl'>{data.category.charAt(0).toUpperCase() + data.category.slice(1)}</div> 
                     }
                     <div className='flex flex-col px-2 py-4 h-[300px]'>
-                        <p className='font-bold text-[24px] leading-2'>{data.blogAuthor.name}</p>
+                        <p className='font-bold text-[24px] leading-2'>{data.blogTitle}</p>
                         <p className='fifty-chars text-[15px] leading-2'>{data.content}</p>
                     </div>
                     <button className='flex items-center justify-center mt-1 mb-2 ml-2 mr-1 border-0 bg-[#FF7606]/80 text-[#fff] text-bold' onClick={() => handleSetUrl(data.id)}>Read More</button>
